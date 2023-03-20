@@ -1,6 +1,8 @@
 import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../slices/basketSlice";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
@@ -8,12 +10,19 @@ const MIN_RATING = 1;
 function Product({ id, title, price, description, category, image }) {
     const [rating,setRating] = useState(0);
     const [hasPrime,setHasPrime] = useState(0);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setRating(Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING);
         setHasPrime(Math.random() < 0.5);
     }, [rating,hasPrime])
     
+    const addItem = () =>{
+        const product = {
+            id, title, rating, price, description, category, image, hasPrime
+        };
+        dispatch(addToBasket(product));
+    }
 
     return (
         <div className="flex relative flex-col m-5 bg-white z-30 p-10">
@@ -28,14 +37,14 @@ function Product({ id, title, price, description, category, image }) {
                     ))}
             </div>
             <p className="text-xs my-2 line-clamp-2">{description}</p>
-            <p className="mb-5">&#8377;{price * 10}</p>
+            <p className="mb-5 font-bold">&#8377;{(price * 10).toFixed(2)}</p>
             {hasPrime && (
                 <div className="items-center flex space-x-2 -mt-5">
                     <img className="w-12" src="https://links.papareact.com/fdw" alt="" />
                     <p className="text-xs text-gray-500">FREE Next-day Delivery</p>
                 </div>
             )}
-            <button className=" mt-auto button">Add to Basket</button>
+            <button onClick={addItem} className=" mt-auto button">Add to Basket</button>
 
         </div>
     )
