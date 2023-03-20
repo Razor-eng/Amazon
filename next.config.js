@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images:{
-    domains:["links.papareact.com","fakestoreapi.com"],
+    domains:["links.papareact.com","fakestoreapi.com","pngimg.com"],
   }
 }
 
