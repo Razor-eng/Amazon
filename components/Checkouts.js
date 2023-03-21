@@ -4,11 +4,13 @@ import { useSelector } from "react-redux"
 import { selectItems, selectTotal } from "../slices/basketSlice"
 import CheckoutProduct from "./CheckoutProduct";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function Checkouts() {
     const items = useSelector(selectItems);
     const { data: session } = useSession();
     const total = useSelector(selectTotal);
+    const router = useRouter();
 
     return (
         <>
@@ -42,7 +44,7 @@ function Checkouts() {
                                     <p>&#8377;{(total * 10).toFixed(2)}</p>
                                 </span>
                             </h2>
-                            <button disabled={!session} className={`button mt-2 ${!session && 'from-gray-300 to-gray-500 border-gray-200 text-black-300 cursor-not-allowed'}    `}>
+                            <button disabled={!session} onClick={()=>router.push('/success')}  className={`button mt-2 ${!session && 'from-gray-300 to-gray-500 border-gray-200 text-black-300 cursor-not-allowed'}    `}>
                                 {!session ? 'Sign in to checkout' : 'Proceed to checkout'}
                             </button>
                         </>
