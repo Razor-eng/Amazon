@@ -14,14 +14,14 @@ function Header() {
         <header>
             <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
                 <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
-                    {/* <Image
+                    <Image
                         onClick={()=>router.push('/')}
-                        src="https://www.linkpicture.com/q/amazon_4.png"
+                        src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
                         width={150}
                         height={40}
                         className="cursor-pointer" 
                         alt="img"
-                        /> */}
+                        />
                 </div>
                 <div className="hidden sm:flex items-center h-10 bg-yellow-400 hover:bg-yellow-500 rounded-md cursor-pointer flex-grow">
                     <input className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none px-4" type="text" />
