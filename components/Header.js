@@ -1,4 +1,5 @@
 import Image from "next/image"
+import amazon from "./amazon.png"
 import { MenuIcon, SearchIcon, ShoppingCartIcon } from "@heroicons/react/outline"
 import { signIn,signOut,useSession } from "next-auth/react"
 import { useRouter } from "next/router";
@@ -16,7 +17,7 @@ function Header() {
                 <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
                     <Image
                         onClick={()=>router.push('/')}
-                        src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                        src={amazon}
                         width={150}
                         height={40}
                         className="cursor-pointer" 
